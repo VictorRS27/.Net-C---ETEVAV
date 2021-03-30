@@ -1,0 +1,6 @@
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\bin\Debug\ConsoleApp8.exe.config
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\bin\Debug\ConsoleApp8.exe
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\bin\Debug\ConsoleApp8.pdb
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\obj\Debug\ConsoleApp8.csproj.CoreCompileInputs.cache
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\obj\Debug\ConsoleApp8.exe
+F:\3ºAno\prw2\lista2\atv10\ConsoleApp8\ConsoleApp8\obj\Debug\ConsoleApp8.pdb

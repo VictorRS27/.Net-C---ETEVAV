@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="ID_Categoria" />
+    </Key>
+    <Property Name="ID_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Categoria" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Livro">
+    <Key>
+      <PropertyRef Name="ID_Livro" />
+    </Key>
+    <Property Name="ID_Livro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="40" />
+    <Property Name="Editora" Type="varchar" MaxLength="40" />
+    <Property Name="ISBN" Type="varchar" MaxLength="14" />
+    <Property Name="Ano" Type="int" />
+    <Property Name="Autor" Type="varchar" MaxLength="40" />
+    <Property Name="Preco" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Categoria" Type="int" />
+  </EntityType>
+  <Association Name="FK__Livro__Categoria__47DBAE45">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+    <End Role="Livro" Type="Self.Livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="ID_Categoria" />
+      </Principal>
+      <Dependent Role="Livro">
+        <PropertyRef Name="Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreContainer">
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Livro" EntityType="Self.Livro" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Livro__Categoria__47DBAE45" Association="Self.FK__Livro__Categoria__47DBAE45">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Livro" EntitySet="Livro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

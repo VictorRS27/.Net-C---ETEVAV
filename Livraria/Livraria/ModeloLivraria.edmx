@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="ID_Categoria" />
+          </Key>
+          <Property Name="ID_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Livro">
+          <Key>
+            <PropertyRef Name="ID_Livro" />
+          </Key>
+          <Property Name="ID_Livro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="40" />
+          <Property Name="Editora" Type="varchar" MaxLength="40" />
+          <Property Name="ISBN" Type="varchar" MaxLength="14" />
+          <Property Name="Ano" Type="int" />
+          <Property Name="Autor" Type="varchar" MaxLength="40" />
+          <Property Name="Preco" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Categoria" Type="int" />
+        </EntityType>
+        <Association Name="FK__Livro__Categoria__47DBAE45">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Livro" Type="Self.Livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="ID_Categoria" />
+            </Principal>
+            <Dependent Role="Livro">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livro" EntityType="Self.Livro" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Livro__Categoria__47DBAE45" Association="Self.FK__Livro__Categoria__47DBAE45">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Livro" EntitySet="Livro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="livrariaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="livrariaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="livrariaModel.Categorias" />
+          <EntitySet Name="Livro" EntityType="livrariaModel.Livro" />
+          <AssociationSet Name="FK__Livro__Categoria__47DBAE45" Association="livrariaModel.FK__Livro__Categoria__47DBAE45">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Livro" EntitySet="Livro" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="ID_Categoria" />
+          </Key>
+          <Property Name="ID_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Livro" Relationship="livrariaModel.FK__Livro__Categoria__47DBAE45" FromRole="Categorias" ToRole="Livro" />
+        </EntityType>
+        <EntityType Name="Livro">
+          <Key>
+            <PropertyRef Name="ID_Livro" />
+          </Key>
+          <Property Name="ID_Livro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Editora" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ISBN" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="Int32" />
+          <Property Name="Autor" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Preco" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Categoria" Type="Int32" />
+          <NavigationProperty Name="Categorias" Relationship="livrariaModel.FK__Livro__Categoria__47DBAE45" FromRole="Livro" ToRole="Categorias" />
+        </EntityType>
+        <Association Name="FK__Livro__Categoria__47DBAE45">
+          <End Type="livrariaModel.Categorias" Role="Categorias" Multiplicity="0..1" />
+          <End Type="livrariaModel.Livro" Role="Livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="ID_Categoria" />
+            </Principal>
+            <Dependent Role="Livro">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="livrariaEntities" >
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="livrariaModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livro">
+            <EntityTypeMapping TypeName="livrariaModel.Livro">
+              <MappingFragment StoreEntitySet="Livro">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ID_Livro" ColumnName="ID_Livro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
